@@ -1,5 +1,13 @@
 # Varnish Docker container
 
+A clone of ``million12/docker-varnish``
+
+Notable changes: 
+
+* Pass VCL config's contents as an env variable instead of pushing config to 
+  volume 
+* Namespaced all varibles with ``VARNISH_``
+
 > Centos 7  
 > Varnish 4.x
 

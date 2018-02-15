@@ -1,5 +1,6 @@
 FROM centos:centos7
-MAINTAINER Przemyslaw Ozgo linux@ozgo.info, Marcin Ryzycki marcin@m12.io
+
+LABEL maintainer="jacek@aksiesis.pl"
 
 RUN yum update -y && \
   yum install -y epel-release && \
