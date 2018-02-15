@@ -1,5 +1,13 @@
 # Varnish Docker container
 
+A clone of ``million12/docker-varnish``
+
+Notable changes: 
+
+* Pass VCL config's contents as an env variable instead of pushing config to 
+  volume 
+* Namespaced all varibles with ``VARNISH_``
+
 > Centos 7  
 > Varnish 4.x
 
@@ -11,7 +19,7 @@ To use this container, you will need to provide your custom config.vcl (which is
 docker run -d \
   --link web-app:backend-host \
   --volumes-from web-app \
-  --env 'VCL_CONFIG=/data/path/to/varnish.vcl' \
+  --env 'VARNISH_ACL_CONFIG=[[base64 encoded vcl file contents]]' \
   million12/varnish
 ```
 
@@ -31,15 +39,16 @@ backend default {
 
 You can configure Varnish daemon by following env variables:
 
-> **VCL_CONFIG** `/etc/varnish/default.vcl`  
-> **CACHE_SIZE** `64m`  
-> **VARNISHD_PARAMS** `-p default_ttl=3600 -p default_grace=3600`
+* **VARNISH_ACL_CONFIG** ``base64 encoded config file``
+* **VARNISH_CACHE_SIZE** `64m`  
+* **VARNISH_VARNISHD_PARAMS** `-p default_ttl=3600 -p default_grace=3600`
 
 
 ## Author(s)
 
 * Marcin Ryzycki (<marcin@m12.io>)  
 * Przemyslaw Ozgo (<linux@ozgo.info>)
+* Jacek Bzdak (jacek@askesis.pl)
 
 ---
 
